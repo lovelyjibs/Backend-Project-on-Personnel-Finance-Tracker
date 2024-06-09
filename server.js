@@ -3,8 +3,12 @@ const express = require("express")
 const dotenv = require("dotenv").config()
 const mongoose = require("mongoose")
 const routes  = require("./routes/financeUserRoutes")
+const transactionRouter =require("./routes/financeTransactionRoutes")
+
 
 const app = express()
+
+app.use (express.json())
 
 const PORT = process.env.PORT||8000
 
@@ -25,3 +29,5 @@ app.get("/",(req, res)=>{
 })
 
 app.use("/api", routes)
+
+app.use("/api",  transactionRouter)
