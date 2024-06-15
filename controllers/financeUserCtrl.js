@@ -1,5 +1,23 @@
 
 const Users = require("../model/usersModel")
+
+
+const financetracker=[
+    
+  {
+    fullName: "Joseph Mary",
+    Email:  "waramisco@gmail.com",
+    Username: "lovelyjibs1",
+    Password: "G123456"
+  },
+     {
+        fullName: "Mary Jay",
+        Email: "Example@gmail.com",
+        Username: "maryjoo2",
+        Password: "D123456"
+     }
+
+]
  
    
    const handleAddUser = async (req, res)=>{
@@ -29,11 +47,28 @@ const Users = require("../model/usersModel")
         message: "User Created Successful"})
 }
 
+const handleGetRequest = async (req,res)=>{
+    return res.status(200).json({message: "Get a single user Successful"})
 
+}
+
+const handlePatchRequest= async (req,res)=>{
+    return res.status(200).json({message: "Upate User Successful"})
+
+}
+
+const handleDeleteRequest = async (req,res)=>{
+    return res.status(200).json({message: "User Deleted Successfully"})
+
+}
  
 
 
 
 module.exports ={
-    handleAddUser
+    handleAddUser,
+    handleGetRequest,
+    handlePatchRequest,
+    handleDeleteRequest
+
 }

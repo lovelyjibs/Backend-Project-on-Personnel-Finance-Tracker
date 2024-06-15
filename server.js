@@ -26,8 +26,32 @@ app.listen(PORT, ()=>{
 
 app.get("/",(req, res)=>{
     return res.status(200).json({message:"welcome to Jigbale Itse Project"})
+
 })
+
+ app.get("/Users")
+
+app
+
+app
+
+app
 
 app.use("/api", routes)
 
+
+
+
+
+
 app.use("/api",  transactionRouter)
+
+app
+
+app.get("/transaction/:transaction Id",(req,res)=>{
+    return res.status(200).json({message: "Get a specific transactions for a user"})
+})
+
+app
+
+app

@@ -1,6 +1,15 @@
  
  
  const Transactions = require("../model/transactionsModels")
+
+ const financeTrackerTransaction ={
+    category: "",
+    description: "",
+    type:   ""
+   
+
+
+ }
  
  const handleAddTransaction= async (req,res)=>{
 
@@ -26,10 +35,25 @@ await newTransaction.save()
  
 
     return res.status(200).json({message: "Transaction Completed"})
+
 }
 
+const handleTransactionGetRequest = async (req,res)=>{
+   return res.status(200).json({message:"Get all successful transactions for a user"})
+
+}
+const handleTransactionPatchRequest = async (req,res)=>{
+   return res.status(200).json({message: "Update a specific transaction for a user"})
+}
+
+const handleTransactionDeleteRequest = async (req,res)=>{
+   return res.status(200).json({message: "Successful delete a specific transaction for a user"})
+}
 
 module.exports = {
-    handleAddTransaction
+    handleAddTransaction,
+    handleTransactionGetRequest,
+    handleTransactionPatchRequest,
+    handleTransactionDeleteRequest,
 }
 
