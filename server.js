@@ -30,6 +30,10 @@ app.get("/",(req, res)=>{
 })
 
  app.get("/Users")
+ 
+ app.get("/get-user", (req,res)=>{
+    return res.status(200).json({message:"successful"})
+ })
 
 app
 

@@ -50,10 +50,21 @@ const handleTransactionDeleteRequest = async (req,res)=>{
    return res.status(200).json({message: "Successful delete a specific transaction for a user"})
 }
 
+const handleGetTransactionRequest= async (req,res)=>{
+   const transactions = await Transactions.find()
+   return res.status(200).json({
+      message:"successful",
+      transactions 
+   })
+}
+
+
+
 module.exports = {
     handleAddTransaction,
     handleTransactionGetRequest,
     handleTransactionPatchRequest,
     handleTransactionDeleteRequest,
+    handleGetTransactionRequest
 }
 
