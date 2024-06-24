@@ -1,12 +1,13 @@
 const express = require("express")
-const { handleAddTransaction, handleTransactionGetRequest, handleTransactionPatchRequest, handleTransactionDeleteRequest } = require("../controllers/financeTransactionCtrl")
+const { handleAddTransaction,handleTransactionPatchRequest, handleTransactionDeleteRequest,handleGetOneTransaction, handleGetAllTransactions } = require("../controllers/financeTransactionCtrl")
 
 const transactionRouter = express.Router()
 
 transactionRouter .post("/add-transaction", handleAddTransaction)
-transactionRouter .get("/transactions/:transactions Id",handleTransactionGetRequest)
+transactionRouter .get("/all-transactions",handleGetAllTransactions)
 transactionRouter .patch("/transcation/:transcation Id",handleTransactionPatchRequest)
 transactionRouter .delete("/transaction/:transaction Id",handleTransactionDeleteRequest)
+transactionRouter .get("/one-transaction",)
 
 
 

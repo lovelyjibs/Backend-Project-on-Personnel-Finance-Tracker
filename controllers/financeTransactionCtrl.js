@@ -32,17 +32,34 @@ const newTransaction =new Transactions({category, type, description })
 
 await newTransaction.save()
 
- 
-
-    return res.status(200).json({message: "Transaction Completed"})
+ return res.status(200).json({message: "Transaction Completed"})
 
 }
 
-const handleTransactionGetRequest = async (req,res)=>{
-   return res.status(200).json({message:"Get all successful transactions for a user"})
 
+
+const handleGetAllTransactions= async (req,res)=>{
+
+   const transaction = await Transactions.find()
+   return res.status(200).json({
+      message:"successful",
+       count: transactions.lenght,
+       transactions
+})
 }
+
+ //const handleRequestForOneTransaction = async(req,res)=>{
+   //const { id }=req.params
+   //const transaction=await Transactions.findById(id)
+   //return res.status(200).json({
+      //message:"successful",
+      //transaction
+   
+   //})
+
+
 const handleTransactionPatchRequest = async (req,res)=>{
+   
    return res.status(200).json({message: "Update a specific transaction for a user"})
 }
 
@@ -50,21 +67,19 @@ const handleTransactionDeleteRequest = async (req,res)=>{
    return res.status(200).json({message: "Successful delete a specific transaction for a user"})
 }
 
-const handleGetTransactionRequest= async (req,res)=>{
-   const transactions = await Transactions.find()
-   return res.status(200).json({
-      message:"successful",
-      transactions 
-   })
-}
+
 
 
 
 module.exports = {
     handleAddTransaction,
-    handleTransactionGetRequest,
+    handleGetAllTransactions,
     handleTransactionPatchRequest,
-    handleTransactionDeleteRequest,
-    handleGetTransactionRequest
+    handleTransactionDeleteRequest
+   
+
+   
+ 
+    
 }
 

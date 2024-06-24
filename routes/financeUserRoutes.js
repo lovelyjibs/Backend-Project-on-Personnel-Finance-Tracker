@@ -1,13 +1,13 @@
 const express = require("express")
-const { handleAddUser, handleGetRequest, handlePatchRequest, handleDeleteRequest, handleGetUserRequest, handleEditedUserRequest } = require("../controllers/financeUserCtrl")
+const { handleAddUser,handleDeleteRequest,handleUpdateUserPassword, handleGetOneUser, handleGetAllUsers } = require("../controllers/financeUserCtrl")
 
 const router = express. Router()
 
 router.post("/add-user",handleAddUser )
-router.get("/users/:id",handleGetRequest)
-router.put("/edit-users/:id",handleEditedUserRequest)
+router.get("/one-user/:id",handleGetOneUser)
+router.patch("/users-password/:id",handleUpdateUserPassword)
 router .delete("/users/:id",handleDeleteRequest)
-router .get("/get-user", handleGetUserRequest)
+router .get("/all-users", handleGetAllUsers)
 
 
 

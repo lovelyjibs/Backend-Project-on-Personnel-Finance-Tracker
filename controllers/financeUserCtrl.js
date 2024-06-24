@@ -48,27 +48,48 @@ const financetracker=[
         user : newUser
     })
         
+
     }
 
-const handleGetRequest = async (req,res)=>{
-    return res.status(200).json({message: "Get a single user Successful", financetracker})
+    
+
+const handleGetOneUser = async (req,res)=>{
+     const { id } =req.params
+     const user = await Users .findbyId(id)
+
+    return res.status(200).json({
+        message: "Get a single user Successful",
+         user
+        })
 
 }
 
-const handleEditedUserRequest= async (req,res)=>{
-    const {id } = req.params
-    const {fullName, Username, Password , Email} = req.body
+const handleUpdateUserPassword= async (req,res)=>{
+    try{
 
-    const patchRequest = await Users.findByIdAndUpdate(
-        id,
-        {fullName, Username, Password , Email},
-        {new : true}
-    )
+       
+        const {id } = req.params
+        const {fullName, Username, Password , Email} = req.body
+    
+        const patchRequest = await Users.findByIdAndUpdate(
+            id,
+            {fullName, Username, Password , Email},
+            {new : true}
+        )
+    
+    
+        return res.status(200).json({message: "Upate User Successful",
+            user: updateUser
+        })
 
 
-    return res.status(200).json({message: "Upate User Successful",
-        users : editeduser
-    })
+
+    }catch(error) {
+        
+        return res.status(500).json({message: error.message})
+
+    }
+    
 
 }
 
@@ -78,7 +99,7 @@ const handleDeleteRequest = async (req,res)=>{
 }
 
  
-const handleGetUserRequest =async (req,res)=>{
+const handleGetAllUsers =async (req,res)=>{
     const users = await Users.find()
     return res.status(200).json({
     message:"successful",
@@ -92,9 +113,9 @@ const handleGetUserRequest =async (req,res)=>{
 
 module.exports ={
     handleAddUser,
-    handleGetRequest,
-    handleEditedUserRequest,
+    handleGetOneUser,
+    handleUpdateUserPassword,
     handleDeleteRequest,
-    handleGetUserRequest
+    handleGetAllUsers
 
 }
